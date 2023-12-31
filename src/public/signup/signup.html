@@ -24,9 +24,9 @@
             color: blanchedalmond;
         }
 
-        h2 {
+        h1 {
             display: block;
-            margin-bottom: 5px;
+            padding: 25px;
             color: blanchedalmond;
         }
 
@@ -52,7 +52,7 @@
     </style>
 </head>
 
-<body data-ng-controller="signupController">
+<body data-ng-controller="SignupController">
 
     <h1>Signup Form</h1>
 
@@ -75,19 +75,7 @@
         <button type="submit">Submit</button>
     </form>
 
-    <script>
-        var app = angular.module('signupApp', []);
 
-        app.controller('signupController', function ($scope) {
-            $scope.user = {};
-
-            $scope.submitForm = function () {
-                // Process the form data here, e.g., send it to a server
-                console.log("Form submitted:", $scope.user);
-                // You can add additional logic here to handle the form data
-            };
-        });
-    </script>
 
 </body>
 
