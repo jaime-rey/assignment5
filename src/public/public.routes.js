@@ -58,6 +58,14 @@
         templateUrl: "src/public/info/info.html",
         controller: "InfoController",
         controllerAs: "infoCtrl",
+        resolve: {
+          userInfo: [
+            "MenuService",
+            function (MenuService) {
+              return MenuService.getUserProfile();
+            },
+          ],
+        },
       });
   }
 })();

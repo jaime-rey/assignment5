@@ -7,7 +7,7 @@
 
     vm.signedUp = false;
 
-    vm.user = MenuService.getUser();
+    vm.user = MenuService.getUserProfile();
     console.log("User is", vm.user);
     if (angular.equals(vm.user, {})) {
       vm.signedUp = false;
