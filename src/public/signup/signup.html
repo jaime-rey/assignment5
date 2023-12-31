@@ -1,20 +1,90 @@
-<h2>Signup Form</h2>
+<!DOCTYPE html>
+<html>
 
-<form data-ng-submit="submitForm()">
-    <label for="firstName">First Name:</label>
-    <input type="text" id="firstName" data-ng-model="user.firstName" required>
-    <br>
-    <label for="lastName">Last Name:</label>
-    <input type="text" id="lastName" data-ng-model="user.lastName" required>
-    <br>
-    <label for="email">Email Address:</label>
-    <input type="email" id="email" data-ng-model="user.email" required>
-    <br>
-    <label for="phone">Phone Number:</label>
-    <input type="tel" id="phone" data-ng-model="user.phone" required>
-    <br>
-    <label for="favoriteDish">Favorite Dish Menu Number:</label>
-    <input type="text" id="favoriteDish" data-ng-model="user.favoriteDish" required>
+<head>
 
-    <button type="submit">Submit</button>
-</form>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <style>
+        body {
+            color: black;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: blanchedalmond;
+        }
+
+        h2 {
+            display: block;
+            margin-bottom: 5px;
+            color: blanchedalmond;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body ng-controller="signupController">
+
+    <h2>Signup Form</h2>
+
+    <form ng-submit="submitForm()">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" ng-model="user.firstName" required>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" ng-model="user.lastName" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" ng-model="user.email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" ng-model="user.phone" required>
+
+        <label for="favoriteDish">Favorite Dish Menu Number:</label>
+        <input type="text" id="favoriteDish" ng-model="user.favoriteDish" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        var app = angular.module('signupApp', []);
+
+        app.controller('signupController', function ($scope) {
+            $scope.user = {};
+
+            $scope.submitForm = function () {
+                // Process the form data here, e.g., send it to a server
+                console.log("Form submitted:", $scope.user);
+                // You can add additional logic here to handle the form data
+            };
+        });
+    </script>
+
+</body>
+
+</html>
