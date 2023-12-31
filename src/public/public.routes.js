@@ -50,8 +50,8 @@
       .state("public.signup", {
         url: "/signup",
         templateUrl: "src/public/signup/signup.html",
-        controller: "SignupController",
-        controllerAs: "signupCtrl",
+        controller: "SignUpController",
+        controllerAs: "signUpCtrl",
       })
       .state("public.info", {
         url: "/info",

@@ -1,39 +1,25 @@
 (() => {
   "use strict";
 
-  let signupController = function (MenuService) {
-    let vm = this;
+  angular.module("public").controller("SignUpController", SignUpController);
 
-    vm.user = {};
-    vm.favoriteDish = {};
+  SignUpController.$inject = ["MenuService"];
+  function SignUpController(MenuService) {
+    let $signUpCtrl = this;
 
-    vm.showError = false; // When this value is true error about the favorite dish wiil be shown
-    vm.showMessage = false; // When this value is true message about successfull signup will be shown
-
-    vm.signup = (form) => {
-      vm.showError = false;
-      vm.showMessage = false;
-      // If the form is not valid don't submit
-      if (form.$invalid) {
-        console.log("The form is not valid");
-        return;
-      }
-
-      MenuService.getFavoriteDish(vm.user.favoriteDish).then(
+    $signUpCtrl.submit = () => {
+      MenuService.getFavoriteDish($signUpCtrl.user.favoriteDish).then(
         (response) => {
-          vm.user.favoriteDish = response.data;
-          console.log(vm.favoriteDish);
-          MenuService.saveUser(vm.user);
-          vm.showMessage = true;
+          $signUpCtrl.user.favDish = response.data;
+          MenuService.setUserProfile($signUpCtrl.user);
+          $signUpCtrl.success = true;
+          $signUpCtrl.error = false;
         },
-        (error) => {
-          console.log(error);
-          vm.showError = true;
+        (response) => {
+          $signUpCtrl.success = false;
+          $signUpCtrl.error = true;
         }
       );
     };
-  };
-
-  signupController.$inject = ["MenuService"];
-  angular.module("public").controller("SignupController", signupController);
+  }
 })();

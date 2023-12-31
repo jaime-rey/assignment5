@@ -1,84 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="container">
+    <h2 id="signUp-title" class="text-center">Sign Up</h2>
+    <fieldset class="form-group">
+        <legend>Sign Up</legend>
+        <form name='signUpForm' novalidate>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" name="firstName" placeholder="First Name"
+                    data-ng-model="$signUpCtrl.user.firstName" required minlength="2" data-ng-maxlength="10">
+                <span
+                    data-ng-if="(signUpForm.firstName.$error.minlength || signUpForm.firstName.$error.required) && signUpForm.firstName.$touched">
+                    First Name must be at least 2 characters long
+                </span>
+                <span data-ng-if="signUpForm.firstName.$error.maxlength && signUpForm.firstName.$touched">
+                    First Name must not be longer than 10 characters
+                </span>
+                <br>
+            </div>
 
-<head>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" name="lastName" placeholder="Last Name"
+                    data-ng-model="$signUpCtrl.user.lastName" required minlength="1" data-ng-maxlength="10">
+                <span
+                    data-ng-if="(signUpForm.lastName.$error.minlength || signUpForm.lastName.$error.required) && signUpForm.lastName.$touched">
+                    Last Name must be at least 1 characters long
+                </span>
+                <span data-ng-if="signUpForm.lastName.$error.maxlength && signUpForm.lastName.$touched">
+                    Last Name must not be longer than 10 characters
+                </span>
+                <br>
+            </div>
 
-    <title>Signup Form</title>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" placeholder="Email"
+                    data-ng-model="$signUpCtrl.user.email" required>
+                <span data-ng-if="signUpForm.email.$invalid && signUpForm.email.$touched">
+                    Must be a valid email address: handle@domain format
+                </span>
+                <br>
+            </div>
 
-    <meta charset="UTF-8">
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" name="phone" placeholder="##########"
+                    data-ng-model="$signUpCtrl.user.phone">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js" defer></script>
-    <style>
-        body {
-            color: black;
-        }
+                <br>
+            </div>
 
-        form {
-            max-width: 400px;
-            margin: 20px auto;
-        }
+            <div class="form-group">
+                <label for="favoriteDish">Favorite Dish</label>
+                <input type="text" class="form-control" name="favoriteDish" placeholder="Favorite Dish"
+                    data-ng-model="$signUpCtrl.user.favoriteDish">
+                <br>
+            </div>
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: blanchedalmond;
-        }
+            <div class="form-group">
+                <div class="alert alert-danger" role="alert" data-ng-if="$signUpCtrl.error">
 
-        h1 {
-            display: block;
-            padding: 25px;
-            color: blanchedalmond;
-        }
+                </div>
+                <div class="alert alert-success" role="alert" data-ng-if="$signUpCtrl.success">
+                    Your data has been stored
+                </div>
+                <br>
+            </div>
 
-        input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
-</head>
-
-<body data-ng-controller="SignupController">
-
-    <h1>Signup Form</h1>
-
-    <form data-ng-submit="submitForm()">
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" data-ng-model="user.firstName" required>
-
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" data-ng-model="user.lastName" required>
-
-        <label for="email">Email Address:</label>
-        <input type="email" id="email" data-ng-model="user.email" required>
-
-        <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" data-ng-model="user.phone" required>
-
-        <label for="favoriteDish">Favorite Dish Menu Number:</label>
-        <input type="text" id="favoriteDish" data-ng-model="user.favoriteDish" required>
-
-        <button type="submit">Submit</button>
-    </form>
-
-
-
-</body>
-
-</html>
-
-</html>
+            <button class="btn btn-primary" data-ng-disabled="signUpForm.$invalid" data-ng-click="$signUpCtrl.submit()">
+                Submit
+            </button>
+        </form>
+    </fieldset>
+</div>
