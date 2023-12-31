@@ -10,7 +10,7 @@
     vm.showError = false; // When this value is true error about the favorite dish wiil be shown
     vm.showMessage = false; // When this value is true message about successfull signup will be shown
 
-    vm.signup = function (form) {
+    vm.signup = (form) => {
       vm.showError = false;
       vm.showMessage = false;
       // If the form is not valid don't submit
@@ -20,13 +20,13 @@
       }
 
       MenuService.getFavoriteDish(vm.user.favoriteDish).then(
-        function (response) {
+        (response) => {
           vm.user.favoriteDish = response.data;
           console.log(vm.favoriteDish);
           MenuService.saveUser(vm.user);
           vm.showMessage = true;
         },
-        function (error) {
+        (error) => {
           console.log(error);
           vm.showError = true;
         }
