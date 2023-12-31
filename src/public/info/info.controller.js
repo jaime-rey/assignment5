@@ -1,21 +1,11 @@
 (() => {
   "use strict";
 
-  let infoController = function (MenuService, ApiPath) {
-    let vm = this;
-    vm.apiPath = ApiPath;
+  angular.module("public").controller("MyInfoController", MyInfoController);
 
-    vm.signedUp = false;
-
-    vm.user = MenuService.getUserProfile();
-    console.log("User is", vm.user);
-    if (angular.equals(vm.user, {})) {
-      vm.signedUp = false;
-    } else {
-      vm.signedUp = true;
-    }
-  };
-
-  infoController.$inject = ["MenuService", "ApiPath"];
-  angular.module("public").controller("InfoController", infoController);
+  MyInfoController.$inject = ["userInfo"];
+  function MyInfoController(userInfo) {
+    let $myInfoCtrl = this;
+    $myInfoCtrl.user = userInfo;
+  }
 })();

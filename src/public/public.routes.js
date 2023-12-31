@@ -56,8 +56,8 @@
       .state("public.info", {
         url: "/info",
         templateUrl: "src/public/info/info.html",
-        controller: "InfoController",
-        controllerAs: "infoCtrl",
+        controller: "MyInfoController",
+        controllerAs: "myInfoCtrl",
         resolve: {
           userInfo: [
             "MenuService",

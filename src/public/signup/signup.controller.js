@@ -7,15 +7,15 @@
   function SignUpController(MenuService) {
     let $signUpCtrl = this;
 
-    $signUpCtrl.submit = () => {
+    $signUpCtrl.submit = function () {
       MenuService.getFavoriteDish($signUpCtrl.user.favoriteDish).then(
-        (response) => {
+        function (response) {
           $signUpCtrl.user.favDish = response.data;
           MenuService.setUserProfile($signUpCtrl.user);
           $signUpCtrl.success = true;
           $signUpCtrl.error = false;
         },
-        (response) => {
+        function (response) {
           $signUpCtrl.success = false;
           $signUpCtrl.error = true;
         }
