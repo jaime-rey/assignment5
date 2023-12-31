@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <title>Signup Form</title>
+
+    <meta charset="UTF-8">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js" defer></script>
     <style>
         body {
             color: black;
@@ -48,25 +52,25 @@
     </style>
 </head>
 
-<body ng-controller="signupController">
+<body data-ng-controller="signupController">
 
     <h2>Signup Form</h2>
 
-    <form ng-submit="submitForm()">
+    <form data-ng-submit="submitForm()">
         <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" ng-model="user.firstName" required>
+        <input type="text" id="firstName" data-ng-model="user.firstName" required>
 
         <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" ng-model="user.lastName" required>
+        <input type="text" id="lastName" data-ng-model="user.lastName" required>
 
         <label for="email">Email Address:</label>
-        <input type="email" id="email" ng-model="user.email" required>
+        <input type="email" id="email" data-ng-model="user.email" required>
 
         <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" ng-model="user.phone" required>
+        <input type="tel" id="phone" data-ng-model="user.phone" required>
 
         <label for="favoriteDish">Favorite Dish Menu Number:</label>
-        <input type="text" id="favoriteDish" ng-model="user.favoriteDish" required>
+        <input type="text" id="favoriteDish" data-ng-model="user.favoriteDish" required>
 
         <button type="submit">Submit</button>
     </form>
@@ -86,5 +90,7 @@
     </script>
 
 </body>
+
+</html>
 
 </html>
